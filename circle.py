@@ -1,5 +1,6 @@
 from __future__ import annotations
 import math
+import doctest
 
 
 class Circle:
@@ -37,5 +38,41 @@ class Circle:
 
     def __str__(self) -> str:
         return f"Circle({self.radius})"
-    
+
+    def add(self, circle: Circle):
+        """
+        :param circle with radius = 4
+        :return: Circle withradius = 5
+
+        Example:
+        >>> first_circle = Circle(3)
+        >>> second_circle = Circle(4)
+        >>> first_circle.add(second_circle)
+        5.0
+        """
+        new_circle = self.add_area(circle)
+        new_radius = new_circle.get_radius()
+        return new_radius
+
+    def circle_radius(self, circle: Circle):
+        """
+        :param circle with negative radius
+        :raise: Exception
+
+        Example:
+        >>> normal_circle = Circle(8)
+        >>> negative_circle = Circle(-9)
+        >>> normal_circle.circle_radius(negative_circle)
+        Traceback (most recent call last):
+        ...
+        """
+        new_circle = self.add_area(circle)
+        new_radius = new_circle.get_radius()
+        if new_radius < 0:
+            raise ...
+
     __repr__ = __str__
+
+
+if __name__ == "__main__":
+    doctest.testmod(verbose=True)
