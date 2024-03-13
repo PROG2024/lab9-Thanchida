@@ -7,3 +7,16 @@
 
    You can use pytest or unittest.
 """
+from counter import Counter
+import unittest
+
+
+class SingletonTest(unittest.TestCase):
+
+    def test_same_singleton(self):
+        c1 = Counter()
+        c2 = c1
+        c1.increment()
+        self.assertEqual(c1, c2)
+
+
